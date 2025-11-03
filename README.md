@@ -34,3 +34,56 @@ Benchmarking is provided with Catch2. You can write benchmarking assertions alon
 [catch2]: https://github.com/catchorg/Catch2
 [cmake]: https://cmake.org/
 [more-than-equations]: https://morethanequations.com/Computer-Science/Labs/You-Get-an-A
+
+## Using the Gradebook
+The Gradebook class provides four main operations:
+1. Add Students
+```bash
+   cppgradebook.add_student(first_name, last_name, student_id);
+```
+
+first_name: Student's first name (string)
+last_name: Student's last name (string)
+student_id: Unique identifier (string)
+
+Example:
+```bash
+cppgradebook.add_student("Bob", "Bobberson", "ABC123");
+```
+
+2. Add Assignments
+```bash
+   cppgradebook.add_assignment(assignment_name, max_points);
+```
+
+assignment_name: Name of the assignment (string)
+max_points: Maximum possible points (double)
+
+Example:
+```bash
+cppgradebook.add_assignment("Quiz 1", 100);
+gradebook.add_assignment("Lab 1", 50);
+```
+
+3. Enter Grades
+```bash
+   cppgradebook.enter_grade(full_name, assignment_name, grade);
+```
+
+full_name: Student's full name as "First Last" (string)
+assignment_name: Name of the assignment (string)
+grade: Points earned (double, between 0 and max_points)
+
+Example:
+```bash
+cppgradebook.enter_grade("Bob Bobberson", "Quiz 1", 85);
+gradebook.enter_grade("Bob Bobberson", "Lab 1", 0);
+```
+
+Note: When entering grades, use the student's full name with a space between first and last name, even though you added them separately.
+4. Generate Report
+```bash
+   cppstd::string report = gradebook.report();
+   std::cout << report;
+   Returns a CSV-formatted string containing all student and grade information.
+```
